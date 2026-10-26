@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  color-scheme: light;
+  --color-ink: #202b29;
+  --color-muted: #64706a;
+  --color-paper: #f4f1eb;
+  --color-card: #fffefa;
+  --color-accent: #bd5c40;
+  --color-accent-dark: #8d3f2c;
+  --color-line: #dedbd3;
+  --space-unit: 1rem;
+  --space-page: clamp(1.25rem, 5vw, 5.5rem);
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+.page {
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem var(--space-page) 1.25rem;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.profile {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: min(100%, 76rem);
+  margin: 0 auto;
+}
+
+.profile__intro { padding: 1rem 0 0; }
+.profile__eyebrow, .project-card__label {
+  color: var(--color-muted);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.profile__eyebrow { display: flex; align-items: center; gap: .65rem; }
+.profile__eyebrow-dot, .portrait__availability-dot {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: #6f9a76;
+}
+.profile__name {
+  margin: 2rem 0 .9rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 17vw, 6.5rem);
+  font-weight: 500;
+  letter-spacing: -.065em;
+  line-height: .9;
+}
+.profile__period { color: var(--color-accent); }
+.profile__role { max-width: 23rem; margin: 1.5rem 0 .7rem; font-size: 1.25rem; font-weight: 600; line-height: 1.35; }
+.profile__bio { max-width: 27rem; margin: 0; color: var(--color-muted); font-size: .98rem; line-height: 1.75; }
+.profile__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.35rem; margin-top: 1.7rem; }
+.button { display: inline-flex; align-items: center; gap: .85rem; min-height: 2.9rem; border-radius: 99px; font-size: .86rem; font-weight: 600; text-decoration: none; transition: background-color .18s ease, color .18s ease, transform .18s ease; }
+.button--primary { padding: .7rem 1.15rem; background: var(--color-ink); color: white; }
+.button--primary:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+.button--text { color: var(--color-ink); }
+.button--text:hover { color: var(--color-accent-dark); }
+.profile__socials { display: flex; gap: .55rem; margin-top: 2.3rem; }
+.profile__social-link { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid var(--color-line); border-radius: 50%; color: var(--color-muted); font-size: .68rem; font-weight: 700; text-decoration: none; transition: color .18s ease, border-color .18s ease; }
+.profile__social-link:hover { border-color: var(--color-accent); color: var(--color-accent-dark); }
+
+.profile__visual { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.portrait { position: relative; isolation: isolate; overflow: hidden; margin: 0; background: #ded2c1; }
+.portrait__image { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 4.5; object-fit: cover; object-position: center 37%; }
+.portrait__caption { position: absolute; z-index: 1; right: 1rem; bottom: 1rem; left: 1rem; color: white; font-family: var(--font-display); font-size: 1.15rem; text-shadow: 0 1px 12px rgb(0 0 0 / 45%); }
+/* This transformed overlay creates its own stacking context and sits over the portrait. */
+.portrait__availability { position: absolute; z-index: 3; top: 1rem; right: .85rem; display: flex; align-items: center; gap: .5rem; max-width: calc(100% - 1.7rem); padding: .7rem .85rem; border: 1px solid rgb(255 255 255 / 60%); border-radius: 99px; background: rgb(255 254 250 / 94%); color: var(--color-ink); font-size: .68rem; font-weight: 600; box-shadow: 0 8px 24px rgb(24 35 31 / 14%); transform: translateZ(0); }
+.portrait__availability-dot { flex: 0 0 auto; }
+
+.project-card { container-type: inline-size; padding: 1.15rem; border: 1px solid var(--color-line); background: var(--color-card); }
+.project-card__meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: .85rem; border-bottom: 1px solid var(--color-line); }
+.project-card__label { font-size: .63rem; }
+.project-card__number { color: var(--color-accent); font-family: var(--font-display); font-size: 1.1rem; }
+.project-card__content { display: flex; flex-direction: column; gap: .8rem; padding-top: .8rem; }
+.project-card__title { margin: 0; font-family: var(--font-display); font-size: 1.35rem; font-weight: 500; letter-spacing: -.025em; }
+.project-card__description { max-width: 28rem; margin: .35rem 0 0; color: var(--color-muted); font-size: .8rem; line-height: 1.55; }
+.project-card__link { align-self: flex-start; display: inline-flex; align-items: center; gap: .6rem; color: var(--color-accent-dark); font-size: .75rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.project-card__link:hover { text-decoration: underline; text-underline-offset: .2em; }
+@container (min-width: 27rem) {
+  .project-card__content { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+  .project-card__link { margin-bottom: .12rem; }
+}
+
+.footer { display: flex; justify-content: space-between; gap: 1rem; width: min(100%, 76rem); margin: 2.5rem auto 0; padding-top: 1rem; border-top: 1px solid var(--color-line); color: var(--color-muted); font-size: .68rem; }
+.footer__symbol { color: var(--color-accent); }
+:where(.button, .profile__social-link, .project-card__link):focus-visible { outline: 3px solid var(--color-accent); outline-offset: 4px; border-radius: 3px; }
+
+@media (min-width: 601px) {
+  .page { display: flex; flex-direction: column; justify-content: center; padding-top: 2.5rem; }
+  .profile { display: grid; grid-template-columns: minmax(0, .88fr) minmax(22rem, 1.12fr); align-items: center; gap: clamp(2.5rem, 7vw, 7rem); }
+  .profile__intro { padding-top: 0; }
+  .profile__name { font-size: clamp(4.5rem, 7vw, 7rem); }
+  .profile__role { font-size: clamp(1rem, 1.8vw, 2rem); }
+  .profile__bio { font-size: clamp(1rem, 1.25vw, 1.08rem); }
+  .profile__visual { gap: 1.15rem; }
+  .portrait__image { aspect-ratio: 4 / 4.7; }
+}
+
+/* Intentionally unused: retained as a small DevTools coverage exercise. */
+.unused-profile-rule { background: rebeccapurple; border-radius: 50%; }
+.unused-profile-rule:hover { transform: rotate(12deg); }
