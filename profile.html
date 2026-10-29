@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Meet Maya Chen, an independent product designer creating thoughtful digital experiences for people and teams.">
+    <meta name="theme-color" content="#f4f1eb">
+    <title>Maya Chen | Independent Product Designer</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #202b29;
+        --muted: #64706a;
+        --paper: #f4f1eb;
+        --card: #fffefa;
+        --accent: #bd5c40;
+        --accent-dark: #8d3f2c;
+        --line: #dedbd3;
+        --space: clamp(1.25rem, 5vw, 5rem);
+        --body-font: "DM Sans", "Avenir Next", sans-serif;
+        --display-font: "Playfair Display", Georgia, serif;
+      }
+
+      *,
+      *::before,
+      *::after { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 1.5rem var(--space);
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--body-font);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .site-header,
+      .site-main,
+      .site-footer {
+        width: min(100%, 76rem);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: .5rem 1.25rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .site-brand {
+        color: var(--ink);
+        font-family: var(--display-font);
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .site-nav__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem 1.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .site-nav__link,
+      .social-link {
+        color: var(--muted);
+        font-size: .82rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .site-nav__link:hover,
+      .social-link:hover,
+      .text-link:hover { color: var(--accent-dark); }
+
+      .profile-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr);
+        align-items: start;
+        gap: clamp(2rem, 6vw, 5.5rem);
+        padding-block: clamp(2.5rem, 7vw, 6rem);
+      }
+
+      .profile-intro { padding-top: clamp(.5rem, 4vw, 3rem); }
+
+      .eyebrow,
+      .section-kicker {
+        margin: 0;
+        color: var(--muted);
+        font-size: .7rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+
+      .profile-title {
+        margin: 1.5rem 0 1rem;
+        font-family: var(--display-font);
+        font-size: clamp(3.75rem, 9vw, 7rem);
+        font-weight: 500;
+        letter-spacing: -.07em;
+        line-height: .92;
+      }
+
+      .profile-title__period { color: var(--accent); }
+
+      .profile-role {
+        max-width: 28rem;
+        margin: 1.25rem 0 .65rem;
+        font-size: clamp(1.1rem, 2vw, 1.45rem);
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .profile-bio {
+        max-width: 32rem;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .profile-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .75rem 1.25rem;
+        margin-top: 1.6rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        gap: .7rem;
+        min-height: 2.85rem;
+        padding: .65rem 1.05rem;
+        border-radius: 99px;
+        font-size: .85rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .button--primary { background: var(--ink); color: white; }
+      .button--primary:hover { background: var(--accent-dark); }
+      .text-link { color: var(--ink); font-size: .85rem; font-weight: 700; text-decoration: none; }
+
+      .portrait-card { position: relative; margin: 0; }
+
+      .portrait-card__image {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 4.6;
+        object-fit: cover;
+        object-position: center 35%;
+        background: #ded2c1;
+      }
+
+      .portrait-card__caption { margin-top: .55rem; color: var(--muted); font-size: .75rem; }
+
+      .availability {
+        position: absolute;
+        z-index: 1;
+        top: 1rem;
+        right: 1rem;
+        padding: .55rem .8rem;
+        border: 1px solid rgb(255 255 255 / 65%);
+        border-radius: 99px;
+        background: rgb(255 254 250 / 94%);
+        color: var(--ink);
+        font-size: .7rem;
+        font-weight: 700;
+        box-shadow: 0 .4rem 1.3rem rgb(24 35 31 / 14%);
+        transform: translateZ(0);
+      }
+
+      .profile-details {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .85rem;
+        margin: 1rem 0 0;
+      }
+
+      .detail-card,
+      .project-card,
+      .contact-panel,
+      .contact-form {
+        border: 1px solid var(--line);
+        background: var(--card);
+      }
+
+      .detail-card { padding: .9rem; }
+      .detail-card__label { display: block; margin: 0; color: var(--muted); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+      .detail-card__value { display: block; margin: .2rem 0 0; font-size: .88rem; font-weight: 600; }
+
+      .work-section,
+      .contact-section { padding-bottom: clamp(2.5rem, 6vw, 5rem); }
+
+      .section-heading {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        margin: .2rem 0 0;
+        font-family: var(--display-font);
+        font-size: clamp(1.7rem, 4vw, 2.5rem);
+        font-weight: 500;
+        letter-spacing: -.04em;
+        line-height: 1.15;
+      }
+
+      .project-card { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(12rem, .8fr); gap: 1.25rem; padding: clamp(1rem, 3vw, 1.75rem); }
+      .project-card__title { margin: 0; font-family: var(--display-font); font-size: 1.5rem; font-weight: 500; }
+      .project-card__description { margin: .4rem 0 0; color: var(--muted); font-size: .9rem; }
+      .project-card__aside { align-self: center; padding-left: 1.2rem; border-left: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+      .project-card__aside p { margin: .3rem 0; }
+
+      .contact-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(20rem, 1.2fr); gap: 1rem; align-items: start; }
+      .contact-panel,
+      .contact-form { padding: clamp(1rem, 3vw, 1.5rem); }
+      .contact-panel__copy { margin: .6rem 0 1.25rem; color: var(--muted); }
+      .contact-panel__email { color: var(--accent-dark); font-weight: 700; overflow-wrap: anywhere; }
+
+      .contact-form { display: grid; gap: 1rem; }
+      .form-field { display: grid; gap: .35rem; }
+      .form-label { font-size: .78rem; font-weight: 700; }
+      .form-hint { margin: 0; color: var(--muted); font-size: .72rem; }
+      .form-control {
+        width: 100%;
+        min-height: 2.8rem;
+        padding: .65rem .75rem;
+        border: 1px solid #b9b9b0;
+        border-radius: .25rem;
+        background: white;
+        color: var(--ink);
+        font: inherit;
+        font-size: .88rem;
+      }
+
+      .form-control--message { min-height: 7rem; resize: vertical; }
+      .form-submit { justify-self: start; min-height: 2.85rem; padding: .65rem 1.1rem; border: 0; border-radius: 99px; background: var(--ink); color: white; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+      .form-submit:hover { background: var(--accent-dark); }
+
+      :where(a, button, input, textarea, select):focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .site-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: 1rem .5rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: .72rem;
+      }
+
+      @media (max-width: 700px) {
+        .profile-layout,
+        .contact-grid { grid-template-columns: 1fr; }
+        .profile-layout { gap: 2rem; padding-top: 2rem; }
+        .profile-intro { padding-top: 0; }
+        .profile-details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .project-card { grid-template-columns: 1fr; }
+        .project-card__aside { padding: .8rem 0 0; border-top: 1px solid var(--line); border-left: 0; }
+      }
+
+      @media (max-width: 420px) {
+        .site-header { align-items: flex-start; flex-direction: column; }
+        .site-nav__list { gap: .35rem 1rem; }
+        .profile-details { grid-template-columns: 1fr; }
+        .site-footer { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-brand" href="#top" aria-label="Maya Chen home">Maya Chen</a>
+      <nav class="site-nav">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#about">About</a></li>
+          <li><a class="site-nav__link" href="#work">Selected work</a></li>
+          <li><a class="site-nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="site-main" id="top">
+      <section class="profile-layout" id="about" aria-labelledby="profile-title">
+        <article class="profile-intro">
+          <p class="eyebrow">Independent designer · Brooklyn, NY</p>
+          <h1 class="profile-title" id="profile-title">Maya<br>Chen<span class="profile-title__period">.</span></h1>
+          <p class="profile-role">I make digital products feel a little more human.</p>
+          <p class="profile-bio">Product designer and curious collaborator working at the intersection of thoughtful technology and everyday life. I help small teams turn complex ideas into useful, welcoming experiences.</p>
+          <p class="profile-actions">
+            <a class="button button--primary" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
+          </p>
+        </article>
+
+        <figure class="portrait-card">
+          <img class="portrait-card__image" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="Maya Chen smiling in warm afternoon light" width="1200" height="1380">
+          <figcaption class="portrait-card__caption">A little more curious, every day.</figcaption>
+          <span class="availability">Available for select projects</span>
+          <dl class="profile-details">
+            <div class="detail-card"><dt class="detail-card__label">Focus</dt><dd class="detail-card__value">Product design</dd></div>
+            <div class="detail-card"><dt class="detail-card__label">Experience</dt><dd class="detail-card__value">8 years</dd></div>
+          </dl>
+        </figure>
+      </section>
+
+      <section class="work-section" id="work" aria-labelledby="work-title">
+        <header class="section-heading">
+          <div><p class="section-kicker">Selected work · 2025</p><h2 class="section-title" id="work-title">A calmer way to care</h2></div>
+          <a class="text-link" href="#contact">Ask about this project <span aria-hidden="true">↗</span></a>
+        </header>
+        <article class="project-card">
+          <div>
+            <h3 class="project-card__title">Making everyday care feel easier</h3>
+            <p class="project-card__description">A family care app that brings routines, notes, and small moments of support into one thoughtful place.</p>
+          </div>
+          <aside class="project-card__aside" aria-label="Project details">
+            <p><strong>Role:</strong> Product strategy and design</p>
+            <p><strong>Partners:</strong> A small, cross-functional team</p>
+            <p><strong>Outcome:</strong> A clearer shared care routine</p>
+          </aside>
+        </article>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <header class="section-heading">
+          <div><p class="section-kicker">Get in touch</p><h2 class="section-title" id="contact-title">Let’s make something useful.</h2></div>
+        </header>
+        <div class="contact-grid">
+          <article class="contact-panel">
+            <h3 class="project-card__title">Have a project in mind?</h3>
+            <p class="contact-panel__copy">Share a little about what you’re working on. I’ll get back to you soon.</p>
+            <a class="contact-panel__email" href="mailto:hello@mayachen.design">hello@mayachen.design</a>
+          </article>
+
+          <form class="contact-form" action="mailto:hello@mayachen.design" method="post" enctype="text/plain">
+            <div class="form-field">
+              <label class="form-label" for="name">Your name</label>
+              <input class="form-control" id="name" name="name" type="text" autocomplete="name" placeholder="Name" minlength="2" aria-describedby="name-hint" required>
+              <p class="form-hint" id="name-hint">Please enter at least 2 characters.</p>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="email">Email address</label>
+              <input class="form-control" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" minlength="5" aria-describedby="email-hint" required>
+              <p class="form-hint" id="email-hint">Use an email address where I can reach you.</p>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="project-type">What would you like to discuss?</label>
+              <select class="form-control" id="project-type" name="project-type" aria-describedby="project-type-hint" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="product-design">Product design</option>
+                <option value="design-systems">Design systems</option>
+                <option value="collaboration">A collaboration</option>
+                <option value="other">Something else</option>
+              </select>
+              <p class="form-hint" id="project-type-hint">Choose the closest match.</p>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="message">A little about your project</label>
+              <textarea class="form-control form-control--message" id="message" name="message" placeholder="What are you hoping to make?" minlength="10" aria-describedby="message-hint" required></textarea>
+              <p class="form-hint" id="message-hint">Please include at least 10 characters.</p>
+            </div>
+            <button class="form-submit" type="submit">Send your note <span aria-hidden="true">↗</span></button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2025 Maya Chen</span>
+      <span>Designed with intention <span aria-hidden="true">✳</span></span>
+    </footer>
+  </body>
+</html>
