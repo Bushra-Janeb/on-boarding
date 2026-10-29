@@ -43,6 +43,10 @@ input, textarea, select, button { font: inherit; }
   margin-inline: auto;
 }
 
+/* Intentionally unused selectors retained as two small review defects. */
+.profile-detail__value { font-variant-numeric: tabular-nums; }
+.project-card__imgae { border-radius: 1rem; }
+
 .site-header {
   display: flex;
   align-items: center;
@@ -181,7 +185,6 @@ input, textarea, select, button { font: inherit; }
   font-size: .7rem;
   font-weight: 700;
   box-shadow: 0 .4rem 1.3rem rgb(24 35 31 / 14%);
-  transform: translateZ(0);
 }
 
 .profile-details {
@@ -191,7 +194,6 @@ input, textarea, select, button { font: inherit; }
   margin: 1rem 0 0;
 }
 
-.detail-card,
 .project-card,
 .contact-panel,
 .contact-form {
@@ -199,9 +201,8 @@ input, textarea, select, button { font: inherit; }
   background: var(--card);
 }
 
-.detail-card { padding: .9rem; }
-.detail-card__label { display: block; margin: 0; color: var(--muted); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.detail-card__value { display: block; margin: .2rem 0 0; font-size: .88rem; font-weight: 600; }
+.detail-card__label { margin: 0; padding: .75rem .75rem 0; color: var(--muted); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.detail-card__value { margin: 0; padding: .15rem .75rem .75rem; border-bottom: 1px solid var(--line); font-size: .88rem; font-weight: 600; }
 
 .work-section,
 .contact-section { padding-bottom: clamp(2.5rem, 6vw, 5rem); }
@@ -224,6 +225,8 @@ input, textarea, select, button { font: inherit; }
 }
 
 .project-card { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding: clamp(1rem, 3vw, 1.75rem); }
+.project-summary { min-width: 0; }
+.project-card__image { width: 100%; height: auto; aspect-ratio: 10 / 7; margin-top: 1rem; border-radius: .75rem; object-fit: cover; }
 .project-card__title { margin: 0; font-family: var(--display-font); font-size: 1.5rem; font-weight: 500; }
 .project-card__description { margin: .4rem 0 0; color: var(--muted); font-size: .9rem; overflow-wrap: anywhere; }
 .project-card__aside { align-self: center; padding-left: 1.2rem; border-left: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
@@ -236,7 +239,7 @@ input, textarea, select, button { font: inherit; }
 .contact-panel__email { color: var(--accent-dark); font-weight: 700; overflow-wrap: anywhere; }
 
 .contact-form { display: grid; gap: 1rem; }
-.form-field { display: grid; gap: .35rem; }
+.form-field { display: grid; min-width: 0; gap: .35rem; margin: 0; padding: 0; border: 0; }
 .form-label { font-size: .78rem; font-weight: 700; }
 .form-hint { margin: 0; color: var(--muted); font-size: .72rem; }
 .form-control {
@@ -255,6 +258,9 @@ input, textarea, select, button { font: inherit; }
 .form-control--message { min-height: 7rem; resize: vertical; }
 .form-submit { justify-self: start; min-height: 2.85rem; padding: .65rem 1.1rem; border: 0; border-radius: 99px; background: var(--ink); color: white; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
 .form-submit:hover { background: var(--accent-dark); }
+
+/* No animated element currently benefits from a persistent compositor hint.
+   Add will-change only if a browser performance profile demonstrates a gain. */
 
 :where(a, button, input, textarea, select):focus-visible {
   outline: 3px solid var(--accent);
