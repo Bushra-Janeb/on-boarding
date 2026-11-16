@@ -4,6 +4,10 @@
 
 Measured in Chrome DevTools Performance **Local metrics** at a 1024px responsive viewport with CPU and network throttling disabled, using the local HTTP server.
 
+### Restored developer profile (Chrome local file)
+
+On 2026-11-16, Chrome DevTools Performance **Local metrics** reported **LCP 0.28 s**, **CLS 0.00**, and identified `h1#profile-title.profile-title` as the LCP element. The page was open at a 1400 × 674 responsive viewport with CPU throttling disabled, the 3G network preset selected, and cache disabled. A full-load Performance recording completed for the same page; the local-metrics reading is the reported LCP value. This confirms the page is below the 2.5 s target in this local browser run. It does not establish a 0.5 s improvement against an equivalent unoptimized baseline.
+
 | Version | LCP | CLS | LCP element |
 | --- | ---: | ---: | --- |
 | Before: profile with embedded hero image, no image preload, and no reserved image dimensions | 0.28 s | 0.00 | `.portrait-card__image` |
